@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rio ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:"Yu Gothic","Meiryo",sans-serif;
+ background:#10051c;color:white;overflow-x:hidden
+}
+
+.hero{
+ min-height:100vh;position:relative;
+ display:flex;justify-content:center;align-items:center;
+ text-align:center;overflow:hidden;
+ background:radial-gradient(circle at 50% 60%,#8c174f,transparent 40%),
+ linear-gradient(#090519,#25082f,#7d194d)
+}
+.hero-content{z-index:5;padding:25px}
+.small-title{font-size:25px}
+.name{
+ font-size:clamp(55px,12vw,105px);
+ font-family:cursive;color:white;
+ text-shadow:0 0 10px #ff4f91,0 0 30px #ff1f75,0 0 60px #ff1f75
+}
+.subtitle{font-size:19px;margin:15px 0 30px}
+.surprise-btn,.music-btn{
+ border:1px solid #ff6b9d;border-radius:30px;color:white;cursor:pointer
+}
+.surprise-btn{
+ padding:16px 35px;background:#f72d70;font-size:18px;
+ box-shadow:0 0 20px #ff3478
+}
+.scroll-down{margin-top:35px;font-size:35px;animation:bounce 1.5s infinite}
+
+.balloon{
+ position:absolute;width:70px;height:90px;border-radius:50%;
+ animation:float 5s ease-in-out infinite
+}
+.balloon:after{
+ content:"";position:absolute;width:1px;height:150px;
+ background:white;top:85px;left:35px
+}
+.b1{left:5%;top:15%;background:#ff527e}
+.b2{right:5%;top:12%;background:#ff8bab}
+.b3{left:8%;bottom:15%;background:#d72872}
+.b4{right:8%;bottom:15%;background:#ff5a9b}
+
+.birthday{
+ min-height:100vh;background:linear-gradient(135deg,#ffe0e5,#ffd1d9);
+ color:#6b1639;display:flex;justify-content:center;align-items:center;
+ text-align:center;padding:70px 20px
+}
+.birthday-box{max-width:900px}
+.birthday-title span{
+ display:block;font-family:cursive;
+ font-size:clamp(55px,10vw,95px);color:#df2762
+}
+.cake{font-size:110px;margin:25px 0;animation:bounce 2s infinite}
+.birthday-text{
+ max-width:750px;margin:auto;font-size:18px;line-height:2
+}
+.wish{margin-top:30px;font-size:23px;font-weight:bold;color:#d92761}
+
+.memories{
+ padding:80px 20px;
+ background:radial-gradient(circle at center,#4c1240,#10051c 75%)
+}
+.section-title{text-align:center;font-size:30px;margin-bottom:40px;color:#ff9cbd}
+.cards{
+ max-width:850px;margin:auto;display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px
+}
+.card{
+ background:white;color:#333;padding:12px 12px 20px;
+ transform:rotate(-2deg);box-shadow:0 10px 30px #0008;transition:.4s
+}
+.card:nth-child(even){transform:rotate(2deg)}
+.card:hover{transform:rotate(0) scale(1.04)}
+.card img{width:100%;height:370px;object-fit:cover;display:block}
+.card p{text-align:center;margin-top:15px;font-size:16px;color:#a52b59}
+
+.letter-section{
+ min-height:100vh;padding:80px 20px;
+ background:radial-gradient(circle,#ffb0c0,#ff809d);
+ display:flex;align-items:center;justify-content:center
+}
+.letter-wrapper{
+ max-width:1000px;width:100%;display:flex;align-items:center;
+ justify-content:space-around;gap:40px;flex-wrap:wrap
+}
+.letter{
+ max-width:650px;background:#fff8ef;color:#3b1823;
+ padding:35px;box-shadow:0 20px 40px #0005;transform:rotate(-1deg)
+}
+.letter h2{text-align:center;color:#d92761;margin-bottom:22px;line-height:1.7}
+.letter p{line-height:2;font-size:16px;margin-bottom:15px}
+.rose{font-size:130px;animation:rose 2s infinite alternate}
+
+.final{
+ min-height:100vh;display:flex;justify-content:center;align-items:center;
+ text-align:center;
+ background:radial-gradient(circle at center,#78184d,transparent 45%),#080411;
+ position:relative;overflow:hidden
+}
+.final-content{z-index:5;padding:20px}
+.final-text{font-size:20px;line-height:1.8}
+.love{
+ font-family:cursive;font-size:clamp(55px,12vw,110px);
+ color:#ff6d9e;text-shadow:0 0 10px #ff3c83,0 0 30px #ff3c83;
+ margin:25px 0
+}
+.signature{font-size:19px;margin-top:30px}
+
+.music-btn{
+ position:fixed;top:15px;left:15px;z-index:100;
+ background:#000b;padding:10px 16px
+}
+
+.music-box{
+ background:#310d2c;padding:25px 15px;text-align:center;
+ border-top:1px solid #ff6b9d
+}
+.music-box h2{color:#ff9cbd;margin-bottom:15px}
+.youtube{
+ width:min(90%,560px);aspect-ratio:16/9;
+ border:2px solid #ff6b9d;border-radius:15px
+}
+
+.heart{
+ position:fixed;bottom:-30px;pointer-events:none;
+ animation:heartUp linear forwards;z-index:20
+}
+@keyframes heartUp{
+ 0%{transform:translateY(0) scale(.5);opacity:0}
+ 20%{opacity:1}
+ 100%{transform:translateY(-110vh) scale(1.5) rotate(360deg);opacity:0}
+}
+@keyframes float{
+ 0%,100%{transform:translateY(0) rotate(-5deg)}
+ 50%{transform:translateY(-30px) rotate(5deg)}
+}
+@keyframes bounce{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-15px)}
+}
+@keyframes rose{
+ from{transform:scale(1);filter:drop-shadow(0 0 5px #ff2f70)}
+ to{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff2f70)}
+}
+
+@media(max-width:600px){
+ .subtitle{font-size:16px}
+ .birthday-text{font-size:16px}
+ .cake{font-size:85px}
+ .letter{padding:22px}
+ .letter p{font-size:15px}
+ .rose{font-size:90px}
+ .card img{height:350px}
+}
+</style>
+</head>
+
+<body>
+
+<button class="music-btn" onclick="scrollToMusic()">
+🎵 Birthday Song
+</button>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+
+<div class="hero-content">
+<div class="small-title">特別な友達へ ❤️</div>
+
+<div class="name">Rioさん</div>
+
+<div class="subtitle">
+💕 Rioさんにサプライズがあります 💕
+</div>
+
+<button class="surprise-btn" onclick="openSurprise()">
+ここをクリック 💌
+</button>
+
+<div class="scroll-down">↓</div>
+</div>
+</section>
+
+<!-- BIRTHDAY -->
+<section class="birthday" id="birthday">
+
+<div class="birthday-box">
+
+<div class="birthday-title">
+🎂
+<span>Happy Birthday!</span>
+<div>Rioさん、お誕生日おめでとう ❤️</div>
+</div>
+
+<div class="cake">🎂</div>
+
+<div class="birthday-text">
+Rioさん、お誕生日おめでとうございます！🎉
+
+これからの一年が、笑顔と幸せでいっぱいの
+素敵な一年になりますように。
+
+Rioさんが心から願っていることが、
+一つずつ叶いますように。✨
+
+いつも優しくしてくれてありがとう。
+
+Rioさんと話していると自然と笑顔になれるし、
+何気ない時間も特別に感じます。❤️
+</div>
+
+<div class="wish">
+これからもずっと笑顔でいてね！🌸
+</div>
+
+</div>
+</section>
+
+<!-- PHOTOS -->
+<section class="memories">
+
+<h2 class="section-title">
+❤️ Rioさんとの思い出 ❤️
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="photo1.jpg" alt="Rio memory 1">
+<p>秋の景色とRioさん 🍁</p>
+</div>
+
+<div class="card">
+<img src="photo2.jpg" alt="Rio memory 2">
+<p>かわいい笑顔が大好きです 🥰</p>
+</div>
+
+</div>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="letter-section">
+
+<div class="letter-wrapper">
+
+<div class="letter">
+
+<h2>🎂❤️ Rioさんへ、心をこめて ❤️</h2>
+
+<p>Rioさんと出会えて、本当によかったと思っています。</p>
+
+<p>
+Rioさんと話していると自然と楽しい気持ちになるし、
+何気ない時間も特別に感じます。
+</p>
+
+<p>
+実は、Rioさんの優しいところや、
+かわいい笑顔がすごく好きです。☺️
+</p>
+
+<p>
+これからもたくさん話して、
+一緒に楽しい思い出を作っていけたらうれしいです。
+</p>
+
+<p>
+つらいときも、うれしいときも、
+いつも笑顔を忘れないでくださいね。
+</p>
+
+<p>
+Rioさんの夢が全部叶いますように。
+そして、毎日が幸せでありますように。✨
+</p>
+
+<p>これからも仲良くしてくださいね。🫶</p>
+
+<h2>大切なRioさんへ、たくさんの愛を込めて ❤️</h2>
+
+</div>
+
+<div class="rose">🌹</div>
+
+</div>
+</section>
+
+<!-- MUSIC PLAYER -->
+<section class="music-box" id="music">
+
+    <h2>🎵 Rioさんへの Special Song ❤️</h2>
+    
+    <p style="margin-bottom:18px;color:#ffd6e5">
+    アンジェラ・アキ - 手紙 ～拝啓 十五の君へ～
+    </p>
+    
+    <iframe
+     width="100%"
+     height="250"
+     src="https://www.youtube-nocookie.com/embed/0yCahMxrsz4?start=10"
+     title="手紙 ～拝啓 十五の君へ～"
+     frameborder="0"
+     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+     allowfullscreen>
+    </iframe>
+    
+    <p style="margin-top:15px;color:#ffd6e5">
+    Rioさん、この曲を聴いてね。💕
+    </p>
+    
+    </section>
+
+<!-- FINAL -->
+<section class="final">
+
+<div class="final-content">
+
+<div class="final-text">
+あなたに出会えてよかった。<br>
+これからも素敵な笑顔を見せてね。❤️
+</div>
+
+<div class="love">大好きです ❤️</div>
+
+<div class="final-text">
+もう一度、お誕生日おめでとう！🎂💕
+</div>
+
+<div class="signature">
+— 心をこめて、<br>
+<b>スレスタ ❤️</b>
+</div>
+
+</div>
+</section>
+
+<script>
+
+function scrollToMusic(){
+ document.getElementById("music").scrollIntoView({
+  behavior:"smooth"
+ });
+}
+
+function openSurprise(){
+ document.getElementById("birthday").scrollIntoView({
+  behavior:"smooth"
+ });
+ startHearts();
+ fireworks();
+}
+
+function createHeart(){
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML=["❤️","💕","💖","💗","💓","💞"]
+ [Math.floor(Math.random()*6)];
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=15+Math.random()*35+"px";
+ h.style.animationDuration=4+Math.random()*5+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),9000);
+}
+
+function startHearts(){
+ for(let i=0;i<50;i++){
+  setTimeout(createHeart,i*80);
+ }
+}
+
+setInterval(createHeart,1200);
+
+function fireworks(){
+ for(let i=0;i<30;i++){
+  setTimeout(()=>{
+   const f=document.createElement("div");
+   f.innerHTML="✨";
+   f.style.position="fixed";
+   f.style.left=Math.random()*100+"vw";
+   f.style.top=Math.random()*70+"vh";
+   f.style.fontSize=20+Math.random()*30+"px";
+   f.style.zIndex=100;
+   f.style.pointerEvents="none";
+   f.style.animation="fadeFire 2s forwards";
+   document.body.appendChild(f);
+   setTimeout(()=>f.remove(),2000);
+  },i*100);
+ }
+}
+
+const style=document.createElement("style");
+style.innerHTML=`
+@keyframes fadeFire{
+ 0%{transform:scale(.2);opacity:0}
+ 30%{transform:scale(1.5);opacity:1}
+ 100%{transform:scale(3);opacity:0}
+}`;
+document.head.appendChild(style);
+
+</script>
+
+</body>
+</html>
